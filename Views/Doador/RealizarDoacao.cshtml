@@ -1,0 +1,48 @@
+﻿@using SupplySearchV1.ViewModels  
+@model CadastrarDoacaoViewModel
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Doações</h1>
+
+
+<form asp-action="CadastrarDoacao">
+    <div class="form-group">
+        <label for="id-Descricao">Descricao</label>
+        <input type="text" name="Descricao" class="form-control" id="id-Descricao" />
+    </div>
+    <div class="form-group">
+        <label for="id-produto">Descrição do Produto</label>
+        <input type="text" name="produto" class="form-control" id="id-produto" />
+    </div>
+    <div class="form-group">
+        <label for="id-quantidade">Quantidade</label>
+        <input type="number" name="quantidade" class="form-control" id="id-quantidade" />
+    </div>
+    <div class="form-group">
+        <label for="id-UnidadeMedida">Unidade De Medida</label>
+        <input type="text" name="UnidadeMedida" class="form-control" id="id-UnidadeMedida" />
+    </div>
+    <div class="form-group">
+        <label for="id-DiaEntrega">Data da Entrega</label>
+        <input type="date" name="DiaEntrega" class="form-control" id="id-DiaEntrega" />
+    </div>
+
+    <div class="form-group">
+        <label for="id-local">Local da Entrega</label>
+        <select name="IDLocal" id="id_idlocal" class="custom-select">
+            @foreach (var item in Model.Local)
+                {
+                    <option value="@item.ID">@item.endereco - @item.numero</option>
+                }
+
+        </select>
+    </div>
+
+    <input type="number" hidden name="IDDoador" value="@Model.Doador.ID" id="id_IDDoador" />
+    <input type="number" hidden name="IDLocal" id="IDLocal" />
+
+    <input type="submit" value="Cadastrar" class="btn btn-outline-success" />
+    <a asp-controller="Doador" asp-action="index" class="btn btn-outline-primary"> Voltar</a>
+</form>

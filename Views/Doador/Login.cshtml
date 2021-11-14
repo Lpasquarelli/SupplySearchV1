@@ -1,0 +1,28 @@
+﻿@model Doador
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+@if (Model != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+
+<form asp-action="Logar">
+    <div class="form-group">
+        <label for="id-email">Email</label>
+        <input type="text" name="email" class="form-control" id="id-email" />
+    </div>
+    <div class="form-group">
+        <label for="id-Senha">Senha</label>
+        <input type="text" name="Senha" class="form-control" id="id-Senha" />
+    </div>
+
+    <input type="submit" value="Login" class="btn btn-outline-success" />
+    <a asp-controller="Doador" asp-action="index" class="btn btn-outline-primary"> Voltar</a>
+</form>

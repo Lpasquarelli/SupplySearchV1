@@ -1,0 +1,63 @@
+﻿@using SupplySearchV1.ViewModels
+@model AreaDonatarioViewModel
+
+<p>
+    <h1>Olá, @Model.donatario.nome</h1>
+</p>
+<p>
+    <h5 style="margin-top:50px">Doações Disponiveis:</h5>
+
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>Produto</th>
+            <th>Disponivel em:</th>
+            <th>Quantidade</th>
+            <th>Enredeço</th>
+            <th>N°</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.doacoes.Where(x => x.idDonatario == null).ToList())
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaEntrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.endereco)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.numero)</td>
+                <td><a href="../RetirarDoacao?id=@item.ID&idDonatario=@Model.donatario.ID" class="btn btn-secondary">Retirar Doacao</a></td>
+            </tr>
+        }
+    </table>
+</p>
+
+<p>
+    <h5 style="margin-top:50px">Doações Agendadas:</h5>
+
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>Produto</th>
+            <th>Disponivel em:</th>
+            <th>Quantidade</th>
+            <th>Enredeço</th>
+            <th>N°</th>
+        </tr>
+        @foreach (var item in Model.doacoes.Where(x => x.idDonatario == Model.donatario.ID).ToList())
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaEntrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.endereco)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.numero)</td>
+            </tr>
+        }
+    </table>
+</p>

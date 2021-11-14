@@ -1,0 +1,36 @@
+﻿@model Doador 
+
+<p>
+    <h1>Olá, @Model.nome</h1>
+</p>
+<p>
+    <h5 style="margin-top:50px">Suas Doações:</h5>
+
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>Produto</th>
+            <th>Data Entrega</th>
+            <th>Quantidade</th>
+            <th>Enredeço</th>
+            <th>N°</th>
+        </tr>
+        @foreach (var item in Model.Doacoes)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaEntrega)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.endereco)</td>
+                <td>@Html.DisplayFor(modelItem => item.LocalEntrega.numero)</td>
+            </tr>
+        }
+    </table>
+</p>
+
+
+
+<a class="btn btn-outline-info" style="margin-top:100px" href="../RealizarDoacao/@Model.ID" >Realizar Doação</a>

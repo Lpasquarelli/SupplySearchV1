@@ -1,0 +1,43 @@
+﻿@model Doador
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Doadores</h1>
+
+@if (Model != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<form asp-action="Cadastrar">
+    <div class="form-group">
+        <label for="id-nome">Nome</label>
+        <input type="text" name="nome" class="form-control" id="id-nome" />
+    </div>
+    <div class="form-group">
+        <label for="id-email">Email</label>
+        <input type="text" name="email" class="form-control" id="id-email" />
+    </div>
+    <div class="form-group">
+        <label for="id-cpf">CPF</label>
+        <input type="text" name="cpf" class="form-control" id="id-idade" />
+    </div>
+    <div class="form-group">
+        <label for="id-telefone">Telefone</label>
+        <input type="text" name="telefone" class="form-control" id="id-telefone" />
+    </div>
+    <div class="form-group">
+        <label for="id-DataNascimento">Data De Nascimento</label>
+        <input type="date" name="DataNascimento" class="form-control" id="id-DataNascimento" />
+    </div>
+    <div class="form-group">
+        <label for="id-Senha">Senha</label>
+        <input type="text" name="Senha" class="form-control" id="id-Senha" />
+    </div>
+
+    <input type="submit" value="Cadastrar" class="btn btn-outline-success" />
+    <a asp-controller="Doador" asp-action="index" class="btn btn-outline-primary"> Voltar</a>
+</form>

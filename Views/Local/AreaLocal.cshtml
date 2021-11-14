@@ -1,0 +1,38 @@
+﻿@using SupplySearchV1.ViewModels 
+@model AreaLocalViewModel
+
+<p>
+    <h1>Olá, @Model.Local.RazaoSocial</h1>
+</p>
+<p>
+    <h5 style="margin-top:50px">Doações para Aprovar:</h5>
+
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Donatario</th>
+            <th>Descrição</th>
+            <th>Produto</th>
+            <th>Data Entrega</th>
+            <th>Quantidade</th>
+            <th>Enredeço</th>
+            <th>N°</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Doacoes.Where(x => x.IDLocal == Model.Local.ID && x.idDonatario != null).ToList())
+        {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.ID)</td>
+        <td>@Html.DisplayFor(modelItem => item.Donatario.nome)</td>
+        <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+        <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+        <td>@Html.DisplayFor(modelItem => item.DiaEntrega)</td>
+        <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+        <td>@Html.DisplayFor(modelItem => item.LocalEntrega.endereco)</td>
+        <td>@Html.DisplayFor(modelItem => item.LocalEntrega.numero)</td>
+        <td><a href="../Aprovar?id=@item.ID&idLocal=@item.IDLocal" class="btn btn-outline-info">Aprovar</a></td>
+
+    </tr>
+        }
+    </table>
+</p>
